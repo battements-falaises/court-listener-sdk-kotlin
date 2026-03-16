@@ -1,7 +1,11 @@
 # Court Listener Kotlin API Library
 
+<!-- x-release-please-start-version -->
+
 [![Maven Central](https://img.shields.io/maven-central/v/com.court_listener_sdk.api/court-listener-kotlin)](https://central.sonatype.com/artifact/com.court_listener_sdk.api/court-listener-kotlin/0.0.1)
 [![javadoc](https://javadoc.io/badge2/com.court_listener_sdk.api/court-listener-kotlin/0.0.1/javadoc.svg)](https://javadoc.io/doc/com.court_listener_sdk.api/court-listener-kotlin/0.0.1)
+
+<!-- x-release-please-end -->
 
 The Court Listener Kotlin SDK provides convenient access to the [Court Listener REST API](https://www.courtlistener.com/contact/) from applications written in Kotlin.
 
@@ -16,9 +20,15 @@ Use the Court Listener MCP Server to enable AI assistants to interact with this 
 
 > Note: You may need to set environment variables in your MCP client.
 
+<!-- x-release-please-start-version -->
+
 The REST API documentation can be found on [www.courtlistener.com](https://www.courtlistener.com/contact/). KDocs are available on [javadoc.io](https://javadoc.io/doc/com.court_listener_sdk.api/court-listener-kotlin/0.0.1).
 
+<!-- x-release-please-end -->
+
 ## Installation
+
+<!-- x-release-please-start-version -->
 
 ### Gradle
 
@@ -35,6 +45,8 @@ implementation("com.court_listener_sdk.api:court-listener-kotlin:0.0.1")
   <version>0.0.1</version>
 </dependency>
 ```
+
+<!-- x-release-please-end -->
 
 ## Requirements
 
@@ -652,4 +664,4 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/court-listener-sdk-kotlin/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/battements-falaises/court-listener-sdk-kotlin/issues) with questions, bugs, or suggestions.
