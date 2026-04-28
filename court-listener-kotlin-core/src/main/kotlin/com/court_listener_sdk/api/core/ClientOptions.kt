@@ -395,6 +395,14 @@ private constructor(
             (System.getProperty("courtlistener.password")
                     ?: System.getenv("COURT_LISTENER_PASSWORD"))
                 ?.let { password(it) }
+            System.getenv("COURT_LISTENER_CUSTOM_HEADERS")?.let { customHeadersEnv ->
+                for (line in customHeadersEnv.split("\n")) {
+                    val colon = line.indexOf(':')
+                    if (colon >= 0) {
+                        putHeader(line.substring(0, colon).trim(), line.substring(colon + 1).trim())
+                    }
+                }
+            }
         }
 
         /**
