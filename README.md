@@ -598,7 +598,9 @@ In rare cases, the API may return a response that doesn't match the expected typ
 
 By default, the SDK will not throw an exception in this case. It will throw [`CourtListenerInvalidDataException`](court-listener-kotlin-core/src/main/kotlin/com/court_listener_sdk/api/errors/CourtListenerInvalidDataException.kt) only if you directly access the property.
 
-If you would prefer to check that the response is completely well-typed upfront, then either call `validate()`:
+Validating the response is _not_ forwards compatible with new types from the API for existing fields.
+
+If you would still prefer to check that the response is completely well-typed upfront, then either call `validate()`:
 
 ```kotlin
 import com.court_listener_sdk.api.models.courts.Court
