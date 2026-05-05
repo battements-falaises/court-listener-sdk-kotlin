@@ -5,10 +5,14 @@ package com.court_listener_sdk.api.errors
 import com.court_listener_sdk.api.core.JsonValue
 import com.court_listener_sdk.api.core.checkRequired
 import com.court_listener_sdk.api.core.http.Headers
+import com.court_listener_sdk.api.core.jsonMapper
 
 class RateLimitException
 private constructor(private val headers: Headers, private val body: JsonValue, cause: Throwable?) :
-    CourtListenerServiceException("429: $body", cause) {
+    CourtListenerServiceException(
+        "429: ${if (body.isMissing()) "Unknown" else jsonMapper().writeValueAsString(body)}",
+        cause,
+    ) {
 
     override fun statusCode(): Int = 429
 
