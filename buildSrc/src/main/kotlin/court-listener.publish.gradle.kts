@@ -26,9 +26,9 @@ configure<PublishingExtension> {
                 }
 
                 scm {
-                    connection.set("scm:git:git://github.com/stainless-sdks/court-listener-sdk-kotlin.git")
-                    developerConnection.set("scm:git:git://github.com/stainless-sdks/court-listener-sdk-kotlin.git")
-                    url.set("https://github.com/stainless-sdks/court-listener-sdk-kotlin")
+                    connection.set("scm:git:git://github.com/battements-falaises/court-listener-sdk-kotlin.git")
+                    developerConnection.set("scm:git:git://github.com/battements-falaises/court-listener-sdk-kotlin.git")
+                    url.set("https://github.com/battements-falaises/court-listener-sdk-kotlin")
                 }
 
                 versionMapping {

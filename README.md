@@ -1,7 +1,11 @@
 # Court Listener Kotlin API Library
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.court_listener_sdk.api/court-listener-kotlin)](https://central.sonatype.com/artifact/com.court_listener_sdk.api/court-listener-kotlin/0.0.1)
-[![javadoc](https://javadoc.io/badge2/com.court_listener_sdk.api/court-listener-kotlin/0.0.1/javadoc.svg)](https://javadoc.io/doc/com.court_listener_sdk.api/court-listener-kotlin/0.0.1)
+<!-- x-release-please-start-version -->
+
+[![Maven Central](https://img.shields.io/maven-central/v/com.court_listener_sdk.api/court-listener-kotlin)](https://central.sonatype.com/artifact/com.court_listener_sdk.api/court-listener-kotlin/0.1.0)
+[![javadoc](https://javadoc.io/badge2/com.court_listener_sdk.api/court-listener-kotlin/0.1.0/javadoc.svg)](https://javadoc.io/doc/com.court_listener_sdk.api/court-listener-kotlin/0.1.0)
+
+<!-- x-release-please-end -->
 
 The Court Listener Kotlin SDK provides convenient access to the [Court Listener REST API](https://www.courtlistener.com/contact/) from applications written in Kotlin.
 
@@ -11,19 +15,25 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 Use the Court Listener MCP Server to enable AI assistants to interact with this API, allowing them to explore endpoints, make test requests, and use documentation to help integrate this SDK into your application.
 
-[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=court-listener-sdk-typescript-mcp&config=eyJuYW1lIjoiY291cnQtbGlzdGVuZXItc2RrLXR5cGVzY3JpcHQtbWNwIiwidHJhbnNwb3J0IjoiaHR0cCIsInVybCI6Imh0dHBzOi8vY291cnQtbGlzdGVuZXItc2RrLnN0bG1jcC5jb20iLCJoZWFkZXJzIjp7IngtY291cnQtbGlzdGVuZXItYXBpLWtleSI6Ik15IEFQSSBLZXkiLCJ4LWNvdXJ0LWxpc3RlbmVyLXVzZXJuYW1lIjoiTXkgVXNlcm5hbWUiLCJ4LWNvdXJ0LWxpc3RlbmVyLXBhc3N3b3JkIjoiTXkgUGFzc3dvcmQifX0)
-[![Install in VS Code](https://img.shields.io/badge/_-Add_to_VS_Code-blue?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCA0MCA0MCI+PHBhdGggZmlsbD0iI0VFRSIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMzAuMjM1IDM5Ljg4NGEyLjQ5MSAyLjQ5MSAwIDAgMS0xLjc4MS0uNzNMMTIuNyAyNC43OGwtMy40NiAyLjYyNC0zLjQwNiAyLjU4MmExLjY2NSAxLjY2NSAwIDAgMS0xLjA4Mi4zMzggMS42NjQgMS42NjQgMCAwIDEtMS4wNDYtLjQzMWwtMi4yLTJhMS42NjYgMS42NjYgMCAwIDEgMC0yLjQ2M0w3LjQ1OCAyMCA0LjY3IDE3LjQ1MyAxLjUwNyAxNC41N2ExLjY2NSAxLjY2NSAwIDAgMSAwLTIuNDYzbDIuMi0yYTEuNjY1IDEuNjY1IDAgMCAxIDIuMTMtLjA5N2w2Ljg2MyA1LjIwOUwyOC40NTIuODQ0YTIuNDg4IDIuNDg4IDAgMCAxIDEuODQxLS43MjljLjM1MS4wMDkuNjk5LjA5MSAxLjAxOS4yNDVsOC4yMzYgMy45NjFhMi41IDIuNSAwIDAgMSAxLjQxNSAyLjI1M3YuMDk5LS4wNDVWMzMuMzd2LS4wNDUuMDk1YTIuNTAxIDIuNTAxIDAgMCAxLTEuNDE2IDIuMjU3bC04LjIzNSAzLjk2MWEyLjQ5MiAyLjQ5MiAwIDAgMS0xLjA3Ny4yNDZabS43MTYtMjguOTQ3LTExLjk0OCA5LjA2MiAxMS45NTIgOS4wNjUtLjAwNC0xOC4xMjdaIi8+PC9zdmc+)](https://vscode.stainless.com/mcp/%7B%22name%22%3A%22court-listener-sdk-typescript-mcp%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fcourt-listener-sdk.stlmcp.com%22%2C%22headers%22%3A%7B%22x-court-listener-api-key%22%3A%22My%20API%20Key%22%2C%22x-court-listener-username%22%3A%22My%20Username%22%2C%22x-court-listener-password%22%3A%22My%20Password%22%7D%7D)
+[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=court-listener-sdk-mcp&config=eyJuYW1lIjoiY291cnQtbGlzdGVuZXItc2RrLW1jcCIsInRyYW5zcG9ydCI6Imh0dHAiLCJ1cmwiOiJodHRwczovL2NvdXJ0LWxpc3RlbmVyLXNkay5zdGxtY3AuY29tIiwiaGVhZGVycyI6eyJ4LWNvdXJ0LWxpc3RlbmVyLWFwaS1rZXkiOiJNeSBBUEkgS2V5IiwieC1jb3VydC1saXN0ZW5lci11c2VybmFtZSI6Ik15IFVzZXJuYW1lIiwieC1jb3VydC1saXN0ZW5lci1wYXNzd29yZCI6Ik15IFBhc3N3b3JkIn19)
+[![Install in VS Code](https://img.shields.io/badge/_-Add_to_VS_Code-blue?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCA0MCA0MCI+PHBhdGggZmlsbD0iI0VFRSIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMzAuMjM1IDM5Ljg4NGEyLjQ5MSAyLjQ5MSAwIDAgMS0xLjc4MS0uNzNMMTIuNyAyNC43OGwtMy40NiAyLjYyNC0zLjQwNiAyLjU4MmExLjY2NSAxLjY2NSAwIDAgMS0xLjA4Mi4zMzggMS42NjQgMS42NjQgMCAwIDEtMS4wNDYtLjQzMWwtMi4yLTJhMS42NjYgMS42NjYgMCAwIDEgMC0yLjQ2M0w3LjQ1OCAyMCA0LjY3IDE3LjQ1MyAxLjUwNyAxNC41N2ExLjY2NSAxLjY2NSAwIDAgMSAwLTIuNDYzbDIuMi0yYTEuNjY1IDEuNjY1IDAgMCAxIDIuMTMtLjA5N2w2Ljg2MyA1LjIwOUwyOC40NTIuODQ0YTIuNDg4IDIuNDg4IDAgMCAxIDEuODQxLS43MjljLjM1MS4wMDkuNjk5LjA5MSAxLjAxOS4yNDVsOC4yMzYgMy45NjFhMi41IDIuNSAwIDAgMSAxLjQxNSAyLjI1M3YuMDk5LS4wNDVWMzMuMzd2LS4wNDUuMDk1YTIuNTAxIDIuNTAxIDAgMCAxLTEuNDE2IDIuMjU3bC04LjIzNSAzLjk2MWEyLjQ5MiAyLjQ5MiAwIDAgMS0xLjA3Ny4yNDZabS43MTYtMjguOTQ3LTExLjk0OCA5LjA2MiAxMS45NTIgOS4wNjUtLjAwNC0xOC4xMjdaIi8+PC9zdmc+)](https://vscode.stainless.com/mcp/%7B%22name%22%3A%22court-listener-sdk-mcp%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fcourt-listener-sdk.stlmcp.com%22%2C%22headers%22%3A%7B%22x-court-listener-api-key%22%3A%22My%20API%20Key%22%2C%22x-court-listener-username%22%3A%22My%20Username%22%2C%22x-court-listener-password%22%3A%22My%20Password%22%7D%7D)
 
 > Note: You may need to set environment variables in your MCP client.
 
-The REST API documentation can be found on [www.courtlistener.com](https://www.courtlistener.com/contact/). KDocs are available on [javadoc.io](https://javadoc.io/doc/com.court_listener_sdk.api/court-listener-kotlin/0.0.1).
+<!-- x-release-please-start-version -->
+
+The REST API documentation can be found on [www.courtlistener.com](https://www.courtlistener.com/contact/). KDocs are available on [javadoc.io](https://javadoc.io/doc/com.court_listener_sdk.api/court-listener-kotlin/0.1.0).
+
+<!-- x-release-please-end -->
 
 ## Installation
+
+<!-- x-release-please-start-version -->
 
 ### Gradle
 
 ```kotlin
-implementation("com.court_listener_sdk.api:court-listener-kotlin:0.0.1")
+implementation("com.court_listener_sdk.api:court-listener-kotlin:0.1.0")
 ```
 
 ### Maven
@@ -32,9 +42,11 @@ implementation("com.court_listener_sdk.api:court-listener-kotlin:0.0.1")
 <dependency>
   <groupId>com.court_listener_sdk.api</groupId>
   <artifactId>court-listener-kotlin</artifactId>
-  <version>0.0.1</version>
+  <version>0.1.0</version>
 </dependency>
 ```
+
+<!-- x-release-please-end -->
 
 ## Requirements
 
@@ -277,8 +289,6 @@ while (true) {
 
 ## Logging
 
-The SDK uses the standard [OkHttp logging interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor).
-
 Enable logging by setting the `COURT_LISTENER_LOG` environment variable to `info`:
 
 ```sh
@@ -289,6 +299,19 @@ Or to `debug` for more verbose logging:
 
 ```sh
 export COURT_LISTENER_LOG=debug
+```
+
+Or configure the client manually using the `logLevel` method:
+
+```kotlin
+import com.court_listener_sdk.api.client.CourtListenerClient
+import com.court_listener_sdk.api.client.okhttp.CourtListenerOkHttpClient
+import com.court_listener_sdk.api.core.LogLevel
+
+val client: CourtListenerClient = CourtListenerOkHttpClient.builder()
+    .fromEnv()
+    .logLevel(LogLevel.INFO)
+    .build()
 ```
 
 ## ProGuard and R8
@@ -380,6 +403,21 @@ val client: CourtListenerClient = CourtListenerOkHttpClient.builder()
         "https://example.com", 8080
       )
     ))
+    .build()
+```
+
+If the proxy responds with `407 Proxy Authentication Required`, supply credentials by also configuring `proxyAuthenticator`:
+
+```kotlin
+import com.court_listener_sdk.api.client.CourtListenerClient
+import com.court_listener_sdk.api.client.okhttp.CourtListenerOkHttpClient
+import com.court_listener_sdk.api.core.http.ProxyAuthenticator
+
+val client: CourtListenerClient = CourtListenerOkHttpClient.builder()
+    .fromEnv()
+    .proxy(...)
+    // Or a custom implementation of `ProxyAuthenticator`.
+    .proxyAuthenticator(ProxyAuthenticator.basic("username", "password"))
     .build()
 ```
 
@@ -586,7 +624,9 @@ In rare cases, the API may return a response that doesn't match the expected typ
 
 By default, the SDK will not throw an exception in this case. It will throw [`CourtListenerInvalidDataException`](court-listener-kotlin-core/src/main/kotlin/com/court_listener_sdk/api/errors/CourtListenerInvalidDataException.kt) only if you directly access the property.
 
-If you would prefer to check that the response is completely well-typed upfront, then either call `validate()`:
+Validating the response is _not_ forwards compatible with new types from the API for existing fields.
+
+If you would still prefer to check that the response is completely well-typed upfront, then either call `validate()`:
 
 ```kotlin
 import com.court_listener_sdk.api.models.courts.Court
@@ -652,4 +692,4 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/court-listener-sdk-kotlin/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/battements-falaises/court-listener-sdk-kotlin/issues) with questions, bugs, or suggestions.

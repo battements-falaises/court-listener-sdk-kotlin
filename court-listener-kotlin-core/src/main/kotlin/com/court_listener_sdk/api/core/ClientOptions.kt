@@ -4,6 +4,7 @@ package com.court_listener_sdk.api.core
 
 import com.court_listener_sdk.api.core.http.Headers
 import com.court_listener_sdk.api.core.http.HttpClient
+import com.court_listener_sdk.api.core.http.LoggingHttpClient
 import com.court_listener_sdk.api.core.http.PhantomReachableClosingHttpClient
 import com.court_listener_sdk.api.core.http.QueryParams
 import com.court_listener_sdk.api.core.http.RetryingHttpClient
@@ -65,6 +66,9 @@ private constructor(
     /**
      * Whether to call `validate` on every response before returning it.
      *
+     * Setting this to `true` is _not_ forwards compatible with new types from the API for existing
+     * fields.
+     *
      * Defaults to false, which means the shape of the response will not be validated upfront.
      * Instead, validation will only occur for the parts of the response that are accessed.
      */
@@ -92,6 +96,14 @@ private constructor(
      * Defaults to 2.
      */
     val maxRetries: Int,
+    /**
+     * The level at which to log request and response information.
+     *
+     * [fromEnv] will set the level from environment variables. See [LogLevel.fromEnv].
+     *
+     * Defaults to [LogLevel.fromEnv].
+     */
+    val logLevel: LogLevel,
     /**
      * Token-based authentication. Provide the header as: `Authorization: Token <your-token-here>`
      */
@@ -153,6 +165,7 @@ private constructor(
         private var responseValidation: Boolean = false
         private var timeout: Timeout = Timeout.default()
         private var maxRetries: Int = 2
+        private var logLevel: LogLevel = LogLevel.fromEnv()
         private var apiKey: String? = null
         private var username: String? = null
         private var password: String? = null
@@ -169,6 +182,7 @@ private constructor(
             responseValidation = clientOptions.responseValidation
             timeout = clientOptions.timeout
             maxRetries = clientOptions.maxRetries
+            logLevel = clientOptions.logLevel
             apiKey = clientOptions.apiKey
             username = clientOptions.username
             password = clientOptions.password
@@ -234,6 +248,9 @@ private constructor(
         /**
          * Whether to call `validate` on every response before returning it.
          *
+         * Setting this to `true` is _not_ forwards compatible with new types from the API for
+         * existing fields.
+         *
          * Defaults to false, which means the shape of the response will not be validated upfront.
          * Instead, validation will only occur for the parts of the response that are accessed.
          */
@@ -274,6 +291,15 @@ private constructor(
          * Defaults to 2.
          */
         fun maxRetries(maxRetries: Int) = apply { this.maxRetries = maxRetries }
+
+        /**
+         * The level at which to log request and response information.
+         *
+         * [fromEnv] will set the level from environment variables. See [LogLevel.fromEnv].
+         *
+         * Defaults to [LogLevel.fromEnv].
+         */
+        fun logLevel(logLevel: LogLevel) = apply { this.logLevel = logLevel }
 
         /**
          * Token-based authentication. Provide the header as: `Authorization: Token
@@ -384,6 +410,7 @@ private constructor(
          * System properties take precedence over environment variables.
          */
         fun fromEnv() = apply {
+            logLevel(LogLevel.fromEnv())
             (System.getProperty("courtlistener.baseUrl")
                     ?: System.getenv("COURT_LISTENER_BASE_URL"))
                 ?.let { baseUrl(it) }
@@ -395,6 +422,14 @@ private constructor(
             (System.getProperty("courtlistener.password")
                     ?: System.getenv("COURT_LISTENER_PASSWORD"))
                 ?.let { password(it) }
+            System.getenv("COURT_LISTENER_CUSTOM_HEADERS")?.let { customHeadersEnv ->
+                for (line in customHeadersEnv.split("\n")) {
+                    val colon = line.indexOf(':')
+                    if (colon >= 0) {
+                        putHeader(line.substring(0, colon).trim(), line.substring(colon + 1).trim())
+                    }
+                }
+            }
         }
 
         /**
@@ -423,28 +458,35 @@ private constructor(
             headers.put("X-Stainless-Runtime", "JRE")
             headers.put("X-Stainless-Runtime-Version", getJavaVersion())
             headers.put("X-Stainless-Kotlin-Version", KotlinVersion.CURRENT.toString())
+            // We replace after all the default headers to allow end-users to overwrite them.
+            headers.replaceAll(this.headers.build())
+            queryParams.replaceAll(this.queryParams.build())
             apiKey?.let {
                 if (!it.isEmpty()) {
-                    headers.put("Authorization", "Token $it")
+                    headers.replace("Authorization", "Token $it")
                 }
             }
             username?.let { username ->
                 password?.let { password ->
                     if (!username.isEmpty() && !password.isEmpty()) {
-                        headers.put(
+                        headers.replace(
                             "Authorization",
                             "Basic ${Base64.getEncoder().encodeToString("$username:$password".toByteArray())}",
                         )
                     }
                 }
             }
-            headers.replaceAll(this.headers.build())
-            queryParams.replaceAll(this.queryParams.build())
 
             return ClientOptions(
                 httpClient,
                 RetryingHttpClient.builder()
-                    .httpClient(httpClient)
+                    .httpClient(
+                        LoggingHttpClient.builder()
+                            .httpClient(httpClient)
+                            .clock(clock)
+                            .level(logLevel)
+                            .build()
+                    )
                     .sleeper(sleeper)
                     .clock(clock)
                     .maxRetries(maxRetries)
@@ -459,6 +501,7 @@ private constructor(
                 responseValidation,
                 timeout,
                 maxRetries,
+                logLevel,
                 apiKey,
                 username,
                 password,
